@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'popper.js';
 import 'jquery';
 import './css/cover.css'
+import regeneratorRuntime from "regenerator-runtime";
 window.$ = window.jQuery = import("jquery");
 import 'bootstrap/js/dropdown.js';
 
