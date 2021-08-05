@@ -19,7 +19,7 @@ async function getProtocolParameters() {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'project_id': '69asIMHk1xxKZ6vVvCLfW7Lf6z0P99rT'
+          'project_id': 'SET YOUR BLOCKFROST API'
         },
         method: 'GET'
     }).then((response) => response.json());
@@ -30,7 +30,7 @@ async function getProtocolParameters() {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'project_id': '69asIMHk1xxKZ6vVvCLfW7Lf6z0P99rT'
+          'project_id': 'SET YOUR BLOCKFROST API'
         },
         method: 'GET'
     }).then((response) => response.json());
@@ -55,7 +55,7 @@ async function getProtocolParameters() {
 
 async function triggerPay() {
     var user= await cardano.getUsedAddresses();
-    var address="addr_test1qpkfyc0ml2uamzqms20jg3kwnvy23paffasjzv92fv79hlgc7yyk9n77fqxdvfr5hs5526lf20g38m9n60wa2d6wzl4qlxfzee"
+    var address="SET YOUR RECIPIENT ADDRESS"
     var offer = 0 // parseInt($("#cardano-offer").value);
     offer = document.getElementById("cardano-offer").value
     // WORKS
