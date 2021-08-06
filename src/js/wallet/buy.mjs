@@ -9,7 +9,15 @@ async function activateCardano(){
     $("#connectBtn").text('Connected');
     $("#connectBtn").attr('class', 'btn btn-success');
 }
-activateCardano();
+try {
+  await activateCardano();
+} catch (e) {
+  $("#connectBtn").text('Not Connected');
+  $("#connectBtn").attr('class', 'btn btn-danger');
+  console.error(e);
+} finally {
+  console.log('We do cleanup here');
+}
 
 async function getProtocolParameters() {
     // use blockfrost api to get this data
