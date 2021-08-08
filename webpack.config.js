@@ -19,7 +19,7 @@ const populateHtmlPlugins = (pagesArray) => {
   return res;
 }
 
-const pages = populateHtmlPlugins(["index", "buy"]);
+const pages = populateHtmlPlugins(["index", "buy", "mint"]);
 
 export default {
   mode: 'development',
@@ -30,6 +30,9 @@ export default {
     path: path.join(__dirname, 'dist'),
     publicPath: '/',
     filename: '[name].js'
+  },
+  resolve: {
+    extensions: ['.js'],
   },
   experiments: {
     asyncWebAssembly: true,
@@ -42,8 +45,6 @@ export default {
     // Allow to use await on module evaluation (Proposal)
   },
   target: 'web',
-  //target: 'node',
-
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
@@ -90,6 +91,10 @@ export default {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: "jquery"
+    }),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'development',
+      API: 'http://localhost:80',    
     })
   ])
 }

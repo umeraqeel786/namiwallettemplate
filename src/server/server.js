@@ -3,6 +3,8 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import env from 'dotenv';
+import bb from 'express-busboy';
+import { upload, blocks_latest, parameters } from './blockfrost.js';
 
 const app = express()
 
@@ -10,10 +12,16 @@ if (process.env.NODE_ENV !== 'production') {
     env.config();
 }
 
+bb.extend(app, {
+  upload: true,
+  path: process.cwd()+'/dist/uploads',
+  allowedPath: /./
+});
+
 app.use(express.static(process.cwd()+"/dist/", { maxAge: "365d"}));
 app.use(cors({origin: [
     'http://127.0.0.1',
-    'http://localhost:4200'
+    'http://localhost:8080'
   ]}));
   
 // Configure CORS
@@ -33,6 +41,10 @@ app.use(
     extended: true,
   })
 )
+
+app.post('/upload',         upload);
+app.get('/blocks_latest',   blocks_latest);
+app.get('/parameters',      parameters);
 // feel free to add your API endpoints here
 
 const PORT = process.env.PORT || 80

@@ -19,46 +19,40 @@ try {
   console.log('We do cleanup here');
 }
 
-async function getProtocolParameters() {
-    // use blockfrost api to get this data
-    // blockfrostRequest will be undefined in this example
-    // const latest_block = await blockfrostRequest('/blocks/latest')
-    const latest_block = await fetch('https://cardano-testnet.blockfrost.io/api/v0/blocks/latest', {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'project_id': 'SET YOUR BLOCKFROST API'
-        },
-        method: 'GET'
-    }).then((response) => response.json());
-    var slotnumber = latest_block.slot;
-    //console.log(slotnumber);
-    
-    const p = await fetch(`https://cardano-testnet.blockfrost.io/api/v0/epochs/latest/parameters`, {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'project_id': 'SET YOUR BLOCKFROST API'
-        },
-        method: 'GET'
-    }).then((response) => response.json());
-    if (p.status >= 400 && p.status < 600) {
-        throw new Error("Bad response from server");
-    }
+export async function getProtocolParameters() {
+  var HOST = process.env.API ? process.env.API : location.origin;
+  const latest_block = await fetch(HOST+'/blocks_latest', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'GET'
+  }).then((response) => response.json());
+  var slotnumber = latest_block.slot;
+  
+  const p = await fetch(`${HOST}/parameters`, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'GET'
+  }).then((response) => response.json());
+  if (p.status >= 400 && p.status < 600) {
+      throw new Error("Bad response from server");
+  }
 
-    var value = {
-        linearFee: S.LinearFee.new(
-        S.BigNum.from_str(p.min_fee_a.toString()),
-        S.BigNum.from_str(p.min_fee_b.toString())
-        ),
-        minUtxo: S.BigNum.from_str(p.min_utxo),
-        poolDeposit: S.BigNum.from_str(p.pool_deposit),
-        keyDeposit: S.BigNum.from_str(p.key_deposit),
-        maxTxSize: p.max_tx_size,
-        slot: slotnumber,
-    };
-    //console.log(value);
-    return value;
+  var value = {
+      linearFee: S.LinearFee.new(
+      S.BigNum.from_str(p.min_fee_a.toString()),
+      S.BigNum.from_str(p.min_fee_b.toString())
+      ),
+      minUtxo: S.BigNum.from_str(p.min_utxo),
+      poolDeposit: S.BigNum.from_str(p.pool_deposit),
+      keyDeposit: S.BigNum.from_str(p.key_deposit),
+      maxTxSize: p.max_tx_size,
+      slot: slotnumber,
+  };
+  return value;
 };
 
 async function triggerPay() {

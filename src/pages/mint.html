@@ -15,8 +15,8 @@
             <nav>
               <ul class="nav masthead-nav">
                 <li><a href="index.html">Home</a></li>
-                <li class="active"><a href="buy.html">Buy</a></li>
-                <li><a href="mint.html">Mint</a></li>
+                <li><a href="buy.html">Buy</a></li>
+                <li class="active"><a href="mint.html">Mint</a></li>
                 <li><button class="btn btn-info" id="connectBtn">Connect</button></li>
               </ul>
             </nav>
@@ -24,16 +24,22 @@
         </div>
 
         <div class="inner cover">
-            <h1 class="cover-heading">Submit payment</h1>
+            <h1 class="cover-heading">Create your NFT!</h1>
             <div class="row">
-              <div class="col-md-11">
-                  <input type="number" id="cardano-offer" class="form-control"
-                  name="Offer" min="10" max="1000000" step="1" placeholder="Place your bid here" size="10" value="2">
-              </div>
-              <div class="col-md-1">
-                <button class="btn btn-info" id="paybtn">Pay!</button>
+              <div class="col-md-12" id="drawContainer" style="height: 100%;">
+                <img id="canvas" name="canvas" width="250" height="250" style="border:1px solid lightgrey;"/>
               </div>
             </div>
+            <div><p id="timer"></p></div>
+            <div class="row">
+              <div class="col-md-11">
+                <input type="file" id="fileInput" name="fileInput" accept="image/*,.pdf"/>
+              </div>
+              <div class="col-md-1">
+                <button class="btn btn-info" id="picturebtn">Save Picture!</button>
+              </div>
+            </div>
+            <div class="row" ><a href="#" id="ipfsurl" target="_blank"></a></div>
           </div>
 
         <div class="mastfoot">

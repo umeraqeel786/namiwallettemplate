@@ -18,6 +18,19 @@ async function getComponent() {
         const { default: single } = await import('./js/wallet/coinSelection.mjs');
         const { default: buy } = await import('./js/wallet/buy.mjs');
     }
+    if (curent === "/mint.html") {
+        const app = await import('./js/mint/app.mjs');
+        async function activateCardano() {
+            const promise = await cardano.enable()
+            $("#connectBtn").text('Connected');
+            $("#connectBtn").attr('class', 'btn btn-success');
+        }
+        activateCardano();
+        $("#mintbtn").on('click', async () => {
+            console.log('mint');
+        });
+        console.log('this is mint.js');
+    }
     const element = document.createElement('script');
     return element;
 }
