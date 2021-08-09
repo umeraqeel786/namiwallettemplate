@@ -1,36 +1,24 @@
-## Welcome to GitHub Pages
+# Nami Wallet Integration Template
 
-You can use the [editor on GitHub](https://github.com/cheffNFT/namiwallettemplate/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Hello, this is a pet project based on the browser extension named Nami Wallet. It allows users connect to any web application, send and receive transactions and buy native assets.
+This is a basic hands that intends to introduce you in the required technologies to work in Cardano network.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Development environment
 
-### Markdown
+Describes whats needed for a developer start developing.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Frond end
 
-```markdown
-Syntax highlighted code block
+Describes front end development
 
-# Header 1
-## Header 2
-### Header 3
+1. Webpack
+2. The Cardano Serialization Library features
+3. JQuery
+4. Bootstrap/CSS
 
-- Bulleted
-- List
+### Backend
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/cheffNFT/namiwallettemplate/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Describes nodejs services interacts with blockfrost api
 
 ### Support or Contact
 
