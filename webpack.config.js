@@ -19,7 +19,7 @@ const populateHtmlPlugins = (pagesArray) => {
   return res;
 }
 
-const pages = populateHtmlPlugins(["index", "buy", "mint"]);
+const pages = populateHtmlPlugins(["index", "buy", "mint", "single"]);
 
 export default {
   mode: 'development',

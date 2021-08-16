@@ -45,7 +45,7 @@ export const upload = (request, response) => {
 export const blocks_latest = (request, response) => {
   axios.get('https://cardano-testnet.blockfrost.io/api/v0/blocks/latest', { headers: {
     'Content-Type': 'application/json',
-    'project_id':  process.env.TESTNET
+    'project_id':  process.env.PROJECT_ID
   }}).then(function (res) {
     response.status(200).send(res.data);
   }).catch(function (error) {
@@ -57,7 +57,20 @@ export const blocks_latest = (request, response) => {
 export const parameters = (request, response) => {
   axios.get('https://cardano-testnet.blockfrost.io/api/v0/epochs/latest/parameters', { headers: {
     'Content-Type': 'application/json',
-    'project_id': process.env.TESTNET
+    'project_id': process.env.PROJECT_ID
+  }}).then(function (res) {
+    response.status(200).send(res.data);
+  }).catch(function (error) {
+    var data = error.response.data;
+    response.status(500).send(data);
+  })
+};
+
+export const assets = (request, response) => {
+  const asset = request.params.asset;
+  axios.get(`https://cardano-testnet.blockfrost.io/api/v0/assets/${asset}`, { headers: {
+    'Content-Type': 'application/json',
+    'project_id': process.env.PROJECT_ID
   }}).then(function (res) {
     response.status(200).send(res.data);
   }).catch(function (error) {

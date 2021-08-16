@@ -31,6 +31,10 @@ async function getComponent() {
         });
         console.log('this is mint.js');
     }
+    if (curent === "/single.html") {
+        const select = await import('./js/assets/select.mjs');
+        const { default: app } = await import('./js/assets/app.mjs');
+    }
     const element = document.createElement('script');
     return element;
 }
