@@ -12,7 +12,8 @@ const curent = window.location.pathname;
 logMessage(window.location.pathname);
 
 async function getComponent() {
-    if (curent === "/index.html") {
+    if (curent === "/") {
+        const nami_lib = await import('nami-wallet-api');
     }
     if (curent === "/buy.html") {
         const { default: single } = await import('./js/wallet/coinSelection.mjs');
